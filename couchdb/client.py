@@ -111,7 +111,7 @@ class Server(object):
     def __nonzero__(self):
         """Return whether the server is available."""
         try:
-            self.resource.head()
+            self.resource.head('/')
             return True
         except:
             return False
@@ -162,7 +162,7 @@ class Server(object):
         to check for the availability of the server.
 
         :rtype: `unicode`"""
-        status, headers, data = self.resource.get_json()
+        status, headers, data = self.resource.get_json('/')
         return data['version']
 
     def stats(self, name=None):
